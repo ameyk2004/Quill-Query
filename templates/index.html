@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuillQuery</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="/static/img/logo.svg" alt="Logo" width="120" class="d-inline-block align-text-top">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              {% if login != 'true' %}
+                <li class="nav-item">
+                  <a class="nav-link" href="/loginpage">Login</a>
+                </li>
+              {% endif %}
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Categories
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Fiction</a></li>
+                  <li><a class="dropdown-item" href="#">Non-Fiction</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/selectcollege">College Books</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search Books" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+    <div id="intro-example" class="p-5 text-center bg-image"
+      style="background-image: url('/static/img/hero.png');">
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="text-white">
+            <h1 class="mb-3" style="font-family: 'Inter', sans-serif; text-transform: uppercase;">Giving Old Books New Stories</h1>
+            <h5 class="mb-4" style="text-transform: capitalize;">
+                At QUILLQUERY, you can buy second hand books and sell old books online at best prices.
+            </h5>
+            <div>
+                <a class="btn btn-outline-light btn-lg m-2" href="/loginpage"
+                role="button" rel="nofollow">BUY</a>
+                <a class="btn btn-outline-light btn-lg m-2" href="/seller"
+                 role="button">SELL</a>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="title">TOP SELLING BOOKS</h4>
+    <div class="book-container">
+        <div class="book">
+            <div class="book-image">
+                <img src="https://m.media-amazon.com/images/I/91Fopn0gUHL._SL1500_.jpg" alt="" height="220px" width="150px">
+            </div>
+            <div class="book-desc">
+                <h4><a href="/10">Electrical Engineering Fundamentals</a></h4>
+            </div>
+        </div>
+        <div class="book">
+            <div class="book-image">
+                <img src="https://m.media-amazon.com/images/I/61-lpEEy2HL._SL1318_.jpg" alt="" height="220px" width="150px">
+            </div>
+            <div class="book-desc">
+                <h4><a href="/11">Basic Electrical Engineering</a></h4>
+            </div>
+        </div>
+        <div class="book">
+            <div class="book-image">
+                <img src="https://m.media-amazon.com/images/I/71mbrGcfx8S._SL1500_.jpg" alt="" height="220px" width="150px">
+            </div>
+            <div class="book-desc">
+                <h4><a href="/12">Advanced Engineering Mathematics</a></h4>
+            </div>
+        </div>
+        <div class="book">
+            <div class="book-image">
+                <img src="https://m.media-amazon.com/images/I/51y1U5JPfyL.jpg" alt="" height="220px" width="150px">
+            </div>
+            <div class="book-desc">
+                <h4><a href="/13">Python: The Complete Reference</a></h4>
+            </div>
+        </div>
+
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 15px;">
+
+        <button class="btn btn-white border shadow-transition border-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">View More</button>
+
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Top Selling Books</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <h5 style="text-align: center; border-bottom: 1px solid black; padding-bottom: 10px;"><u>Fiction</u></h5>
+            <div style="text-align: center;"><p><button onclick="bookbtn('theAlchemist')" name="theAlchemist" class="book-btn" style="border: none; background-color: transparent;"><a href="/0" style="color:black; text-decoration: none;">The Alchemist</a></button></p></div>
+            <div style="text-align: center;"><p><button onclick="bookbtn('theRoad')" name="theRoad" class="book-btn" style="border: none; background-color: transparent;"><a href="/1" style="color:black; text-decoration: none;">The Road</a></button></p></div>
+            <div style="text-align: center;"><p><button onclick="bookbtn('theGreatGatsby')" name="theGreatGatsby" class="book-btn" style="border: none; background-color: transparent;"><a href="/2" style="color:black; text-decoration: none;">The Great Gatsby</a></button></p></div>
+            <div style="text-align: center;"><p><button onclick="bookbtn('Catch-22')" name="Catch-22" class="book-btn" style="border: none; background-color: transparent;"><a href="/3" style="color:black; text-decoration: none;">Catch-22</a></button></p></div>
+            <div style="text-align: center;"><p><button onclick="bookbtn('CityUnderOneRoof')" name="CityUnderOneRoof" class="book-btn" style="border: none; background-color: transparent;"><a href="/4" style="color:black; text-decoration: none;">City Under One Roof</a></button></p></div>
+            
+            <h5 style="text-align: center; border-bottom: 1px solid black; padding-bottom: 10px; margin-top: 10px; text-underline-offset: 3px;"><u>Non-Fiction</u></h5>
+            <div style="text-align: center;"><p><button onclick="bookbtn('theAlchemist')" name="theAlchemist" class="book-btn" style="border: none; background-color: transparent;">A Brief History of Time</button></p></div>
+            <div style="text-align: center;"><p><button onclick="bookbtn('theRoad')" name="theRoad" class="book-btn" style="border: none; background-color: transparent;">In Cold Blood</button></p></div>
+            <div style="text-align: center;"><p><button onclick="bookbtn('theGreatGatsby')" name="theGreatGatsby" class="book-btn" style="border: none; background-color: transparent;">When Breath Becomes Air</button></p></div>
+            <div style="text-align: center;"><p><button onclick="bookbtn('Catch-22')" name="Catch-22" class="book-btn" style="border: none; background-color: transparent;">Freakonomics</button></p></div>
+            <div style="text-align: center;"><p><button onclick="bookbtn('CityUnderOneRoof')" name="CityUnderOneRoof" class="book-btn" style="border: none; background-color: transparent;">Into Thin Air</button></p></div>
+            
+            <h5 style="text-align: center; border-bottom: 1px solid black; padding-bottom: 10px; margin-top: 10px; text-underline-offset: 3px;"><u>College Books</u></h5>
+            <div style="text-align: center;"><p><button onclick="bookbtn('theAlchemist')" name="theAlchemist" class="book-btn" style="border: none; background-color: transparent;">Electrical Engineering Fundamentals</button></p></div>
+            <div style="text-align: center;"><p><button onclick="bookbtn('theRoad')" name="theRoad" class="book-btn" style="border: none; background-color: transparent;">Basic Electrical Engineering</button></p></div>
+            <div style="text-align: center;"><p><button onclick="bookbtn('theGreatGatsby')" name="theGreatGatsby" class="book-btn" style="border: none; background-color: transparent;">Advanced Engineering Mathematics</button></p></div>
+            <div style="text-align: center;"><p><button onclick="bookbtn('Catch-22')" name="Catch-22" class="book-btn" style="border: none; background-color: transparent;">Python: The Complete Reference</button></p></div>
+            <div style="text-align: center;"><p><button onclick="bookbtn('CityUnderOneRoof')" name="CityUnderOneRoof" class="book-btn" style="border: none; background-color: transparent;">Engineering Chemistry</button></p></div>
+            
+          </div>
+        </div>
+    </div>
+
+    <div class="offer-container">
+      <div class="offer">
+        <div><h2>30% OFF</h2></div>
+        <div>For Our Student Community</div>
+      </div>
+    </div>
+
+
+    <section class="mission-container">
+
+
+    </section>
+
+    <footer>
+      <div>@2023 Pulzion QuillQuery</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="/static/script.js"></script>   
+</body>
+</html>
